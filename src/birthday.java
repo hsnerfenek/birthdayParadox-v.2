@@ -4,9 +4,9 @@
 import javax.swing.plaf.basic.BasicComboPopup;
 import java.util.Random;
 enum aylar{Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık}
-public class birthday {
+public class Birthday {
     Random rand = new Random();
-    int[][] dogumTarihleri = {new int[31],
+    private int[][] dogumTarihleri = {new int[31],
             new int[28],
             new int[31],
             new int[30],
@@ -18,12 +18,20 @@ public class birthday {
             new int[31],
             new int[30],
             new int[31]};
-    int cakismaSayisi = 0;
-    int toplamCakismaSayisi = 0;
 
-    void dogumGunuOlustur(int n) // parametresini aldığı n sayıda doğum gününü oluşturur.
+    private int cakismaSayisi = 0;
+    private int toplamCakismaSayisi = 0;
+
+    public int getCakismaSayisi() {
+        return cakismaSayisi;
+    }
+
+    public int getToplamCakismaSayisi() {
+        return toplamCakismaSayisi;
+    }
+
+    public void dogumGunuOlustur(int n) // parametresini aldığı n sayıda doğum gününü oluşturur.
     {
-
         int aySayisi;
         int gunsayisi;
         for(int i=1;i<=n;i++)
@@ -36,7 +44,7 @@ public class birthday {
         }
         toplamCakismaSayisi += cakismaSayisi;
     }
-    void dogumGunleriniSifirla()
+    public void dogumGunleriniSifirla() //dogum günlerinin tutuldugu matisi ve çakışma sayısını sıfırlar.
     {
         for(int satir=0; satir<12; satir++)
         {
@@ -45,7 +53,7 @@ public class birthday {
         }
         cakismaSayisi = 0;
     }
-    void yazAylariDogumGunuOlustur(int n) // Haziran- Temmuz - Ağustos ayları için doğum günü oluşturur.
+    public void yazAylariDogumGunuOlustur(int n) // Haziran- Temmuz - Ağustos ayları için doğum günü oluşturur.
     {
         Random rand = new Random();
         int aySayisi;
@@ -60,7 +68,7 @@ public class birthday {
         }
         toplamCakismaSayisi += cakismaSayisi;
     }
-    void ayrintiliIstatistik()
+    public void ayrintiliIstatistik() // bir yıldaki tüm çakışmaları ay-gün tablosu şeklinde ekrana yazdırır. Altta çakışma sayısını verir.
     {
         System.out.println("Ay/Gün\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\t13\t14\t15\t16\t17\t18\t19\t20\t21\t22\t23\t24\t25\t26\t27\t28\t29\t30\t31");
         for (int i=0; i<=11; i++)
@@ -73,7 +81,6 @@ public class birthday {
             System.out.println("");
         }
         System.out.println("Çakışma Sayısı: "+cakismaSayisi);
-
     }
 
 }
