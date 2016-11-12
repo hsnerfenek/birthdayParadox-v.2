@@ -1,7 +1,3 @@
-/**
- * Created by Hasan on 20.10.2016.
- */
-import javax.swing.plaf.basic.BasicComboPopup;
 import java.util.Random;
 enum aylar{Ocak,Şubat,Mart,Nisan,Mayıs,Haziran,Temmuz,Ağustos,Eylül,Ekim,Kasım,Aralık}
 public class Birthday {
@@ -34,7 +30,7 @@ public class Birthday {
     {
         int aySayisi;
         int gunsayisi;
-        for(int i=1;i<=n;i++)
+        for(int sayac=1; sayac<=n; sayac++)
         {
             aySayisi =  rand.nextInt(12)+1;
             gunsayisi = (rand.nextInt(dogumTarihleri[aySayisi-1].length)+1);
@@ -53,30 +49,32 @@ public class Birthday {
         }
         cakismaSayisi = 0;
     }
+
     public void yazAylariDogumGunuOlustur(int n) // Haziran- Temmuz - Ağustos ayları için doğum günü oluşturur.
     {
         Random rand = new Random();
         int aySayisi;
         int gunsayisi;
-        for(int i=1;i<=n;n++)
+        for(int sayac=1;sayac<=n;sayac++)
         {
             aySayisi =  rand.nextInt(3)+6;
-            gunsayisi = rand.nextInt(dogumTarihleri[aySayisi-1].length);
+            gunsayisi = (rand.nextInt(dogumTarihleri[aySayisi-1].length)+1);
             if(dogumTarihleri[aySayisi-1][gunsayisi-1] >= 1)
                 cakismaSayisi++;
             dogumTarihleri[aySayisi-1][gunsayisi-1]++;
         }
         toplamCakismaSayisi += cakismaSayisi;
     }
+
     public void ayrintiliIstatistik() // bir yıldaki tüm çakışmaları ay-gün tablosu şeklinde ekrana yazdırır. Altta çakışma sayısını verir.
     {
         System.out.println("Ay/Gün\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\t13\t14\t15\t16\t17\t18\t19\t20\t21\t22\t23\t24\t25\t26\t27\t28\t29\t30\t31");
-        for (int i=0; i<=11; i++)
+        for (int satir=0; satir<=11; satir++)
         {
-            System.out.print(aylar.values()[i]);
-            for (int j=0; j<dogumTarihleri[i].length; j++)
+            System.out.print(aylar.values()[satir]);
+            for (int sutun=0; sutun<dogumTarihleri[satir].length; sutun++)
             {
-                System.out.print("\t"+dogumTarihleri[i][j]);
+                System.out.print("\t"+dogumTarihleri[satir][sutun]);
             }
             System.out.println("");
         }
